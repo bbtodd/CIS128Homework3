@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="A basic web application built to demonstrate some basic skills">
+  <title>ABC Toys : Homework 3 : CIS-128-OLH-Mobile Web App Development</title>
+  <link href="./output.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+    <body>
+  
+
+
+            <!-- The grid parent -->
+            <div class="mx-auto container grid grid-cols-5">
+                <!-- Header section -->
+                <!-- Header section -->
+                <header class="col-span-5 p-0 bg-blue-300">
+                    <div x-data="{ open: false }" class="bg-white shadow-md">
+                        <div class="container mx-auto flex justify-between items-center p-4">
+                          <div class="text-blue-500 font-bold text-3xl"><span class="text-red-500">A</span><span class="text-green-500">B</span><span class="text-purple-500">C</span> Toys</div>
+                          <button @click="open = !open" class="lg:hidden text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                          </button>
+                          <div class="hidden lg:flex">
+                            <ul class="lg:flex space-x-4">
+                                <li><a id="home" class="text-blue-500 hover:text-blue-800 target:font-semibold target:text-blue-800 focus:outline-none" href="index.html#home">Home</a></li>
+                                <li><a id="products" class="text-blue-500 hover:text-blue-800 target:font-semibold target:text-blue-800 focus:outline-none" href="products.html#products">Products</a></li>
+                                <li><a id="contact" class="text-blue-500 hover:text-blue-800 target:font-semibold target:text-blue-80 focus:outline-none" href="contact.html#contact">Contact</a></li>
+                                <li><a id="location" class="text-blue-500 hover:text-blue-800 target:font-semibold target:text-blue-800 focus:outline-none" href="location.html#location">Location</a></li>
+                                <li><a id="extras" class="text-blue-500 hover:text-blue-800 target:font-semibold target:text-blue-800 focus:outline-none" href="extras.html#extras">Extras</a></li>
+                              </ul>
+                          </div>
+                        </div>
+                        <div x-show="open" class="lg:hidden">
+                          <ul class="bg-white">
+                            <li class="p-4 border-solid border-0 border-t border-b border-blue-500 hover:bg-blue-100"><a class="text-blue-500 target:font-semibold target:text-blue-800" href="index.html#home">Home</a></li>
+                            <li class="p-4 border-solid border-0 border-b border-blue-500 hover:bg-blue-100"><a class="text-blue-500 target:font-semibold target:text-blue-800" href="products.html#products">Products</a></li>
+                            <li class="p-4 border-solid border-0 border-b border-blue-500 hover:bg-blue-100"><a class="text-blue-500 target:font-semibold target:text-blue-800" href="contact.html#contact">Contact</a></li>
+                            <li class="p-4 border-solid border-0 border-b border-blue-500 hover:bg-blue-100"><a class="text-blue-500 target:font-semibold target:text-blue-800" href="location.html#location">Location</a></li>
+                            <li class="p-4 border-solid border-0 border-b border-blue-500 hover:bg-blue-100"><a class="text-blue-500 target:font-semibold target:text-blue-800" href="extras.html#extras">Extras</a></li>
+                        </ul>
+                        </div>
+                      </div>
+                    </header>
+        
+            
+        
+                <!-- Main content -->
+                <main class="col-span-5 h-full min-h-96 p-10 bg-blue-50">
+
+                    <h3 class="text-2xl text-indigo-900 font-bold mt-2 mb-3">
+                        Look at our fantastic toys!
+                    </h3>
+
+            
+                    <div id="products" class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+
+                        <!-- begin product -->
+                        <div x-data="{ expanded: false }" class="p-4 bg-blue-400">
+                            <h2>
+                                <button type="button" class="flex items-center justify-between w-full text-left font-semibold" @click="expanded = !expanded" :aria-expanded="expanded" aria-controls="faqs-text-01">
+                                    <span>Wooden Castle</span>
+                                    <svg class="fill-indigo-500 shrink-0 ml-8" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div role="region" aria-labelledby="product-description"
+                                class="grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out" :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                                <div class="overflow-hidden">
+                                    <img class="max-w-full pt-4" src="img/wooden_castle.png" alt="Wooden Toy Sherrif's Cottage">
+                                    <p class="pt-2 pb-2">
+                                        Your little one will enjoy playing with this 14 piece modular wooden castle set. Made of alder wood, this lovely wooden castle will inspire hours of imaginative play.
+                                    </p>
+                                    <p class="inline">
+                                    Qty: <input type="text" id="QTY" name="quantity" class="p-2 w-8 border-solid border-2 border-slate-700 rounded box-border mt-2 mb-3" value="1">
+                                    <button class="min-w-24 text-cyan-200 p-2 border-solid border-2 border-slate-700 bg-indigo-700 rounded box-border mt-2 mb-3 hover:bg-indigo-900">Add to Cart</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!-- end product -->
+
+
+                        <!-- begin product -->
+                        <div x-data="{ expanded: false }" class="p-4 bg-blue-400">
+                            <h2>
+                                <button type="button" class="flex items-center justify-between w-full text-left font-semibold" @click="expanded = !expanded" :aria-expanded="expanded" aria-controls="faqs-text-01">
+                                    <span>St. George and the Dragon Set</span>
+                                    <svg class="fill-indigo-500 shrink-0 ml-8" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div role="region" aria-labelledby="product-description"
+                                class="grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out" :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                                <div class="overflow-hidden">
+                                    <img class="max-w-full pt-4" src="img/knight.jpg" alt="Wooden Toy Sherrif's Cottage">
+                                    <p class="pt-2 pb-2">
+                                        St. George and the Dragon will make a wonderful addition to your child's wooden fairytale collection. This set consists of a warhorse, knight figurine and spear. The knight's cape is removable. 
+                                    </p>
+                                    <p class="inline">
+                                    Qty: <input type="text" id="QTY" name="quantity" class="p-2 w-8 border-solid border-2 border-slate-700 rounded box-border mt-2 mb-3" value="1">
+                                    <button class="min-w-24 text-cyan-200 p-2 border-solid border-2 border-slate-700 bg-indigo-700 rounded box-border mt-2 mb-3 hover:bg-indigo-900">Add to Cart</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!-- end product -->
+
+                        <!-- begin product -->
+                        <div x-data="{ expanded: false }" class="p-4 bg-blue-400">
+                            <h2>
+                                <button type="button" class="flex items-center justify-between w-full text-left font-semibold" @click="expanded = !expanded" :aria-expanded="expanded" aria-controls="faqs-text-01">
+                                    <span>Castle Gate and Towers Set</span>
+                                    <svg class="fill-indigo-500 shrink-0 ml-8" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div role="region" aria-labelledby="product-description"
+                                class="grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out" :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                                <div class="overflow-hidden">
+                                    <img class="max-w-full pt-4" src="img/castle.jpg" alt="Wooden Toy Sherrif's Cottage">
+                                    <p class="pt-2 pb-2">
+                                        This beautifully handmade wooden castle will allow your child to make up their own tales of dashing maidens, kings and queens, brave knights and fiery dragons.This set includes one Castle gate with a gate that opens and closes and two castle towers.
+                                    </p>
+                                    <p class="inline">
+                                    Qty: <input type="text" id="QTY" name="quantity" class="p-2 w-8 border-solid border-2 border-slate-700 rounded box-border mt-2 mb-3" value="1">
+                                    <button class="min-w-24 text-cyan-200 p-2 border-solid border-2 border-slate-700 bg-indigo-700 rounded box-border mt-2 mb-3 hover:bg-indigo-900">Add to Cart</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!-- end product -->
+                    
+                        <!-- begin product -->
+                        <div x-data="{ expanded: false }" class="p-4 bg-blue-400">
+                            <h2>
+                                <button type="button" class="flex items-center justify-between w-full text-left font-semibold" @click="expanded = !expanded" :aria-expanded="expanded" aria-controls="faqs-text-01">
+                                    <span>Sherrif's Cottage</span>
+                                    <svg class="fill-indigo-500 shrink-0 ml-8" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                        <rect y="7" width="16" height="2" rx="1" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div role="region" aria-labelledby="product-description"
+                                class="grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out" :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                                <div class="overflow-hidden">
+                                    <img class="max-w-full pt-4" src="img/sheriff.jpg" alt="Wooden Toy Sherrif's Cottage">
+                                    <p class="pt-2 pb-2">
+                                        Visit the Wild West!!!  Your child will enjoy hours of creative play with this 80 piece Sheriff's Cottage from French toymaker, Jeujura. 
+                                    </p>
+                                    <p class="inline">
+                                    Qty: <input type="text" id="QTY" name="quantity" class="p-2 w-8 border-solid border-2 border-slate-700 rounded box-border mt-2 mb-3" value="1">
+                                    <button class="min-w-24 text-cyan-200 p-2 border-solid border-2 border-slate-700 bg-indigo-700 rounded box-border mt-2 mb-3 hover:bg-indigo-900">Add to Cart</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!-- end product -->
+
+                    </div><!-- products -->
+
+                </main>
+        
+
+                <!-- Footer -->
+                <footer class="col-span-5 p-4 text-indigo-700 bg-blue-200">
+                    <p class="text-center">&copy; Copyright <script>document.write(new Date().getFullYear());</script> | ABC Toys</p>
+                </footer>
+            </div>
+        </body>
+        
+        
+        </html>
+        
